@@ -27,7 +27,6 @@ internal object DependencyServices {
         }
     }
 
-    // Private helper functions to hide the implementation of InstanceScope
     private inline fun <reified T : Any> addFactory(factory: InstanceScope<T>) {
         check(instances[T::class] == null) {
             "Definition for ${T::class::java} has already been added"
@@ -44,7 +43,7 @@ internal object DependencyServices {
         return InstanceScope.SingletonFactory<T> { creator() }
     }
 
-    private sealed interface InstanceScope<T> {
+    sealed interface InstanceScope<T> {
         // Transient dependencies are recreated every time they are requested
         fun interface TransientFactory<T>: InstanceScope<T> {
             fun create(): T
