@@ -9,5 +9,27 @@
         android:id="@+id/homeFragment"
         android:name="com.example.brickey.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_searchResultsFragment"
+            app:destination="@id/searchResultsFragment" >
+            <argument
+                android:name="searchQueryString"
+                android:defaultValue="@null" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/searchResultsFragment"
+        android:name="com.example.brickey.ui.search_results.SearchResultsFragment"
+        android:label="fragment_search_results"
+        tools:layout="@layout/fragment_search_results" >
+        <argument
+            android:name="searchQueryString"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+        <action
+            android:id="@+id/action_searchResultsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>
