@@ -11,31 +11,53 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:text="brickey"
-            android:textSize="24sp"
+        <View
+            android:id="@+id/backgroundCircleContainer_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="-500dp"
+            android:layout_marginTop="160dp"
+            android:layout_marginEnd="-500dp"
+            android:background="@drawable/circle"
+
+            android:backgroundTint="@color/purple_soft"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/search_editText"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="12dp"
             android:autofillHints=""
-            android:ems="10"
+            android:background="@drawable/rounded_rect_14"
             android:hint="@string/set_search_hint"
             android:inputType="textShortMessage|text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            android:padding="8dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            app:layout_constraintEnd_toStartOf="@+id/search_button"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toTopOf="@+id/backgroundCircleContainer_view" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/search_button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="40dp"
+            app:backgroundTint="#fff"
+            android:background="@drawable/rounded_rect_14"
+            app:layout_constraintBottom_toBottomOf="@+id/search_editText"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/search_editText" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -23,14 +23,21 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         val binding: FragmentHomeBinding = FragmentHomeBinding.inflate(inflater)
-        val navController = findNavController()
 
-        binding.searchEditText.setOnSubmitListener {
-            val action = HomeFragmentDirections
-                .actionHomeFragmentToSearchResultsFragment(binding.searchEditText.text.toString())
-            navController.navigate(action)
-        }
+        binding.searchEditText.setOnSubmitListener { onSearch(binding.searchEditText.text.toString()) }
+        binding.searchButton.setOnClickListener { onSearch(binding.searchEditText.text.toString()) }
 
         return binding.root
+    }
+
+    private fun onSearch(query: String) {
+        if (query.isEmpty())
+            return
+
+        val navController = findNavController()
+        val action = HomeFragmentDirections
+            .actionHomeFragmentToSearchResultsFragment(query)
+
+        navController.navigate(action)
     }
 }

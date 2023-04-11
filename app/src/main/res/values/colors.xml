@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- brickey -->
+    <color name="purple_hard">#736bfb</color>
+    <color name="purple_soft">#8373e1</color>
+    <color name="orange_hard">#feb017</color>
+    <color name="orange_soft">#e7a53d</color>
 </resources>
