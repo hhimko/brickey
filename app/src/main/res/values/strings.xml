@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">brickey</string>
+    <string name="set_search_hint">search for a set</string>
 </resources>

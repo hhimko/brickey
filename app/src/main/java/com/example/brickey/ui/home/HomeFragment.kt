@@ -10,21 +10,25 @@ import androidx.navigation.fragment.findNavController
 import com.example.brickey.R
 import com.example.brickey.databinding.FragmentHomeBinding
 import com.example.brickey.di.ViewModelFactories
+import com.example.brickey.ui.search_results.SearchResultsFragment
+import com.example.brickey.ui.search_results.SearchResultsFragmentDirections
 import com.example.utility.setOnSubmitListener
 
 
 class HomeFragment : Fragment() {
-    private val viewModel: HomeViewModel by viewModels { ViewModelFactories.homeViewModelFactory }
+    private val _viewModel: HomeViewModel by viewModels { ViewModelFactories.homeViewModelFactory }
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding: FragmentHomeBinding = FragmentHomeBinding.inflate(inflater)
-        val nav_controller = findNavController()
-    Direction
+        val navController = findNavController()
+
         binding.searchEditText.setOnSubmitListener {
-            nav_controller.navigate(R.id.action_homeFragment_to_searchResultsFragment)
+            val action = HomeFragmentDirections
+                .actionHomeFragmentToSearchResultsFragment(binding.searchEditText.text.toString())
+            navController.navigate(action)
         }
 
         return binding.root
