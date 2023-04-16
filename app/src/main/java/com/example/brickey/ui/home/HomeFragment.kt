@@ -7,11 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.brickey.R
 import com.example.brickey.databinding.FragmentHomeBinding
 import com.example.brickey.di.ViewModelFactories
-import com.example.brickey.ui.search_results.SearchResultsFragment
-import com.example.brickey.ui.search_results.SearchResultsFragmentDirections
+import com.example.brickey.models.SetSearchQuery
 import com.example.utility.setOnSubmitListener
 
 
@@ -30,14 +28,14 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-    private fun onSearch(query: String) {
-        if (query.isEmpty())
+    private fun onSearch(searchTerm: String) {
+        if (searchTerm.isEmpty())
             return
 
-        val navController = findNavController()
-        val action = HomeFragmentDirections
-            .actionHomeFragmentToSearchResultsFragment(query)
+        val query = SetSearchQuery(searchTerm)
+        val action = HomeFragmentDirections.actionHomeFragmentToSearchResultsFragment(query)
 
+        val navController = findNavController()
         navController.navigate(action)
     }
 }

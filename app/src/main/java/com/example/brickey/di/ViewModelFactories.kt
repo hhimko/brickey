@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.brickey.ui.home.HomeViewModel
 import com.example.brickey.ui.search_results.SearchResultsViewModel
-import com.example.utility.HttpClient
+import com.example.rebrickable.RebrickableApiClient
 
 
 // Static ViewModel factory implementations
@@ -21,15 +21,15 @@ class ViewModelFactories {
 
         val homeViewModelFactory = object: ViewModelFactory<HomeViewModel> {
             override fun inject(): HomeViewModel {
-                val apiClient = DependencyServices.getInstance<HttpClient>()
-
-                return HomeViewModel(apiClient)
+                return HomeViewModel()
             }
         }
 
         val searchResultsViewModelFactory = object: ViewModelFactory<SearchResultsViewModel> {
             override fun inject(): SearchResultsViewModel {
-                return SearchResultsViewModel()
+                val apiClient = DependencyServices.getInstance<RebrickableApiClient>()
+
+                return SearchResultsViewModel(apiClient)
             }
         }
     }

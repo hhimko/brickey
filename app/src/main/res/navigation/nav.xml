@@ -12,24 +12,18 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_searchResultsFragment"
-            app:destination="@id/searchResultsFragment" >
-            <argument
-                android:name="searchQueryString"
-                android:defaultValue="@null" />
-        </action>
+            app:destination="@id/searchResultsFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchResultsFragment"
         android:name="com.example.brickey.ui.search_results.SearchResultsFragment"
         android:label="fragment_search_results"
         tools:layout="@layout/fragment_search_results" >
-        <argument
-            android:name="searchQueryString"
-            app:argType="string"
-            app:nullable="true"
-            android:defaultValue="@null" />
         <action
             android:id="@+id/action_searchResultsFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <argument
+            android:name="searchQuery"
+            app:argType="com.example.brickey.models.SetSearchQuery" />
     </fragment>
 </navigation>

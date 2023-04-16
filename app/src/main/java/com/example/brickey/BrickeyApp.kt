@@ -2,7 +2,7 @@ package com.example.brickey
 
 import android.app.Application
 import com.example.brickey.di.DependencyServices
-import com.example.utility.HttpClient
+import com.example.rebrickable.RebrickableApiClient
 
 
 class BrickeyApp: Application() {
@@ -11,7 +11,7 @@ class BrickeyApp: Application() {
         super.onCreate()
 
         // Configure DI services
-        val apiClient = HttpClient("")
-        DependencyServices.addSingleton<HttpClient>(apiClient)
+        val apiClient = RebrickableApiClient(auth_token = BuildConfig.API_KEY)
+        DependencyServices.addSingleton<RebrickableApiClient>(apiClient)
     }
 }
