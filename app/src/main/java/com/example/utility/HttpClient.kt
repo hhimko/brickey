@@ -32,6 +32,7 @@ class HttpClient private constructor (private val _baseURL: URL) {
         (url.openConnection() as? HttpURLConnection)?.run {
             requestMethod = "GET"
             setRequestProperty("Accept", "application/json")
+            setRequestProperty("charset", "utf-8")
             readTimeout = this@HttpClient.readTimeout
             doInput = true
             doOutput = false
@@ -81,5 +82,11 @@ class HttpClient private constructor (private val _baseURL: URL) {
         val result: T
     ) {
         val isSuccess: Boolean get() { return code == HttpURLConnection.HTTP_OK }
+    }
+
+    companion object {
+        fun buildParams(params: Map<String, *>): String {
+            return params.map{ (key, value) -> "$key=${value.toString()}" }.joinToString("&")
+        }
     }
 }
