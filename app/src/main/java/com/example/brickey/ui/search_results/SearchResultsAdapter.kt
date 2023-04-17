@@ -1,6 +1,5 @@
 package com.example.brickey.ui.search_results
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,14 +7,16 @@ import com.example.brickey.databinding.SearchResultCardviewBinding
 import com.example.rebrickable.models.Set
 
 
-class SearchResultsAdapter(private val _results: List<Set>) :
-    RecyclerView.Adapter<SearchResultsAdapter.SearchResultsViewHolder>() {
+class SearchResultsAdapter(
+    private val _viewModel: SearchResultsViewModel, private val _results: List<Set>
+) : RecyclerView.Adapter<SearchResultsAdapter.SearchResultsViewHolder>() {
 
-    class SearchResultsViewHolder(context: Context, val binding: SearchResultCardviewBinding)
+    class SearchResultsViewHolder(private val binding: SearchResultCardviewBinding)
         : RecyclerView.ViewHolder(binding.root) {
 
         fun bindSearchResult(set: Set) {
-            binding.textView.text = set.name
+            binding.setThemeTextView.text = set.theme?.getFullThemeName() ?: "LEGO®"
+            binding.setNameTextView.text = set.name
         }
     }
 
@@ -23,11 +24,16 @@ class SearchResultsAdapter(private val _results: List<Set>) :
         val inflater = LayoutInflater.from(parent.context)
         val binding = SearchResultCardviewBinding.inflate(inflater, parent, false)
 
-        return SearchResultsViewHolder(parent.context, binding)
+        return SearchResultsViewHolder(binding)
     }
 
     override fun onBindViewHolder(viewHolder: SearchResultsViewHolder, position: Int) {
-        viewHolder.bindSearchResult(_results[position])
+        val set = _results[position]
+
+        // Query the set theme info
+        _viewModel.loadSetTheme(set)
+
+        viewHolder.bindSearchResult(set)
     }
 
     override fun getItemCount(): Int {

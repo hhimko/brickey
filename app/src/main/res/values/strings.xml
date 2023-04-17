@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">brickey</string>
     <string name="set_search_hint">search for a set</string>
+    <string name="search_result_cardview_image_contentDescription">Set image</string>
 </resources>

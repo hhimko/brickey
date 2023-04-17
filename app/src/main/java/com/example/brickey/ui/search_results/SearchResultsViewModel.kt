@@ -19,7 +19,16 @@ class SearchResultsViewModel(
     fun searchSets(query: SetSearchQuery) {
         viewModelScope.launch {
             val pagedResponse = _apiClient.getSetsAsync(query.searchTerm)
-            _setsLD.value = pagedResponse.results
+            _setsLD.value = pagedResponse?.results ?: emptyList()
+        }
+    }
+
+    fun loadSetTheme(set: Set) {
+        if (set.theme != null)
+            return
+
+        viewModelScope.launch {
+            set.theme = _apiClient.getThemeByIdAsync(set.themeId)
         }
     }
 }

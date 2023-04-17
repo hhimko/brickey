@@ -50,7 +50,7 @@ class SearchResultsFragment : Fragment() {
         _binding.searchResultsRecyclerView.layoutManager =  LinearLayoutManager(context)
 
         _viewModel.setsLiveData.observe(viewLifecycleOwner) {
-            _binding.searchResultsRecyclerView.adapter = SearchResultsAdapter(it)
+            _binding.searchResultsRecyclerView.adapter = SearchResultsAdapter(_viewModel, it)
         }
     }
 }
