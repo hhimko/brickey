@@ -14,7 +14,8 @@ class SearchResultsAdapter(
     class SearchResultsViewHolder(private val binding: SearchResultCardviewBinding)
         : RecyclerView.ViewHolder(binding.root) {
 
-        fun bindSearchResult(set: Set) {
+        fun bindSearchResult(viewModel: SearchResultsViewModel, set: Set) {
+            viewModel.loadSetImage(binding.root.context, binding.setImageView, set)
             binding.setThemeTextView.text = set.theme?.getFullThemeName() ?: "LEGO®"
             binding.setNameTextView.text = set.name
         }
@@ -33,7 +34,7 @@ class SearchResultsAdapter(
         // Query the set theme info
         _viewModel.loadSetTheme(set)
 
-        viewHolder.bindSearchResult(set)
+        viewHolder.bindSearchResult(_viewModel, set)
     }
 
     override fun getItemCount(): Int {
