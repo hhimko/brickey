@@ -28,12 +28,23 @@ class SearchResultsViewModel(
         }
     }
 
-    fun loadSetTheme(set: Set) {
+    fun loadSetTheme(set: Set, on_loaded: () -> Unit) {
         if (set.theme != null)
             return
 
         viewModelScope.launch {
             set.theme = _apiClient.getThemeByIdAsync(set.themeId)
+            on_loaded()
+        }
+    }
+
+    fun loadSetMinifigs(set: Set, on_loaded: () -> Unit) {
+        if (set.minifigs != null)
+            return
+
+        viewModelScope.launch {
+            set.minifigs = _apiClient.getMinifigsForSetNum(set.setNum)
+            on_loaded()
         }
     }
 

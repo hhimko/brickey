@@ -13,7 +13,8 @@ class HttpClient private constructor (private val _baseURL: URL) {
         : this(URL(base_url))
 
     private val _defaults = mutableMapOf<String, String>()
-    val JSON get() = Json { ignoreUnknownKeys = true }
+    val JSON: Json get() = Json { ignoreUnknownKeys = true }
+    val baseURL: String get() = _baseURL.path
 
     var readTimeout: Int = 5000
 

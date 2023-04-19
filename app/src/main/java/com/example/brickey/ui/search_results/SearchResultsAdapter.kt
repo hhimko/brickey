@@ -16,8 +16,18 @@ class SearchResultsAdapter(
 
         fun bindSearchResult(viewModel: SearchResultsViewModel, set: Set) {
             viewModel.loadSetImage(binding.root.context, binding.setImageView, set)
-            binding.setThemeTextView.text = set.theme?.getFullThemeName() ?: "LEGO®"
             binding.setNameTextView.text = set.name
+
+            // Query the set theme info
+            viewModel.loadSetTheme(set) {
+                binding.setThemeTextView.text = set.theme?.getFullThemeName() ?: "LEGO®"
+            }
+
+            // Query the set minifig list
+            viewModel.loadSetMinifigs(set) {
+                binding.minifigCountTextView.text =
+                    if (set.minifigs != null) set.minifigs!!.count().toString() else "?"
+            }
         }
     }
 
@@ -30,10 +40,6 @@ class SearchResultsAdapter(
 
     override fun onBindViewHolder(viewHolder: SearchResultsViewHolder, position: Int) {
         val set = _results[position]
-
-        // Query the set theme info
-        _viewModel.loadSetTheme(set)
-
         viewHolder.bindSearchResult(_viewModel, set)
     }
 

@@ -26,4 +26,7 @@ data class Set(
     @Transient
     var theme: Theme? = null
 
+    @Transient
+    var minifigs: List<Minifig>? = null
+
 }
