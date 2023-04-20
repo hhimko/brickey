@@ -1,18 +1,21 @@
 package com.example.brickey.ui.search_results
 
 import android.content.Context
-import android.graphics.drawable.Drawable
+import android.view.ViewTreeObserver.OnPreDrawListener
 import android.widget.ImageView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.ViewTarget
+import com.bumptech.glide.load.MultiTransformation
+import com.bumptech.glide.request.RequestOptions
 import com.example.brickey.models.SetSearchQuery
 import com.example.rebrickable.RebrickableApiClient
 import kotlinx.coroutines.launch
 import com.example.rebrickable.models.Set
+import jp.wasabeef.glide.transformations.BlurTransformation
+import jp.wasabeef.glide.transformations.CropTransformation
 
 
 class SearchResultsViewModel(
@@ -53,5 +56,27 @@ class SearchResultsViewModel(
             return
 
         Glide.with(context).load(set.imageURL).centerCrop().into(view)
+    }
+
+    fun loadBlurredSetImage(context: Context, view: ImageView, set: Set) {
+        if (set.imageURL == null)
+            return
+
+        val viewTreeObserver = view.viewTreeObserver
+        if (viewTreeObserver.isAlive) {
+            viewTreeObserver.addOnPreDrawListener(object: OnPreDrawListener {
+                override fun onPreDraw(): Boolean {
+                    view.viewTreeObserver.removeOnPreDrawListener(this)
+
+                    val transform = MultiTransformation(
+                        BlurTransformation(10, 3),
+                        CropTransformation(view.width, view.height, CropTransformation.CropType.CENTER)
+                    )
+
+                    Glide.with(context).load(set.imageURL).apply(RequestOptions.bitmapTransform(transform)).into(view)
+                    return true
+                }
+            })
+        }
     }
 }

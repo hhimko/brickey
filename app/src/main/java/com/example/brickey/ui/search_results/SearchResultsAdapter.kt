@@ -16,6 +16,8 @@ class SearchResultsAdapter(
 
         fun bindSearchResult(viewModel: SearchResultsViewModel, set: Set) {
             viewModel.loadSetImage(binding.root.context, binding.setImageView, set)
+
+            viewModel.loadBlurredSetImage(binding.root.context, binding.backgroundOverlayImageView, set)
             binding.setNameTextView.text = set.name
 
             // Query the set theme info
@@ -24,10 +26,10 @@ class SearchResultsAdapter(
             }
 
             // Query the set minifig list
-            viewModel.loadSetMinifigs(set) {
-                binding.minifigCountTextView.text =
-                    if (set.minifigs != null) set.minifigs!!.count().toString() else "?"
-            }
+//            viewModel.loadSetMinifigs(set) {
+//                binding.minifigCountTextView.text =
+//                    if (set.minifigs != null) set.minifigs!!.count().toString() else "?"
+//            }
         }
     }
 
