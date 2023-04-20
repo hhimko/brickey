@@ -16,9 +16,11 @@ class SearchResultsAdapter(
 
         fun bindSearchResult(viewModel: SearchResultsViewModel, set: Set) {
             viewModel.loadSetImage(binding.root.context, binding.setImageView, set)
-
             viewModel.loadBlurredSetImage(binding.root.context, binding.backgroundOverlayImageView, set)
+
             binding.setNameTextView.text = set.name
+            binding.setNumberTextView.text = set.setNum
+            binding.setYearTextView.text = set.releaseYear.toString()
 
             // Query the set theme info
             viewModel.loadSetTheme(set) {

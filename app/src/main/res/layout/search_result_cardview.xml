@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:text="LEGO® Technic"
+                    android:text="@string/lego"
                     android:textColor="@color/white"
                     android:textSize="12sp"
                     android:textStyle="italic"
@@ -75,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:text="Set Name"
+                    android:text="@string/set_name"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -83,14 +83,49 @@
                     app:layout_constraintStart_toStartOf="@+id/set_theme_textView"
                     app:layout_constraintTop_toBottomOf="@+id/set_theme_textView" />
 
+                <ImageView
+                    android:id="@+id/set_hash_number_imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/set_number_textView"
+                    app:srcCompat="@drawable/hash_number"
+                    app:tint="@color/white"
+                    android:contentDescription="@string/set_number" />
+
                 <TextView
-                    android:id="@+id/minifig_count_textView"
+                    android:id="@+id/set_number_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
+                    android:text="@string/unknown3"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/set_hash_number_imageView" />
+
+                <ImageView
+                    android:id="@+id/set_year_calendar_imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="10dp"
+                    android:contentDescription="@string/set_release_year"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/set_number_textView"
+                    app:layout_constraintTop_toTopOf="@+id/set_number_textView"
+                    app:srcCompat="@drawable/calendar"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:id="@+id/set_year_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unknown3"
+                    android:textSize="12sp"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/set_name_textView" />
+                    app:layout_constraintStart_toEndOf="@+id/set_year_calendar_imageView" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
