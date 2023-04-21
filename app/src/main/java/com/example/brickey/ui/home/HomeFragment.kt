@@ -24,6 +24,7 @@ class HomeFragment : Fragment() {
 
         binding.searchEditText.setOnSubmitListener { onSearch(binding.searchEditText.text.toString()) }
         binding.searchButton.setOnClickListener { onSearch(binding.searchEditText.text.toString()) }
+        binding.searchIconButton.setOnClickListener { onSearch(binding.searchEditText.text.toString()) }
 
         return binding.root
     }

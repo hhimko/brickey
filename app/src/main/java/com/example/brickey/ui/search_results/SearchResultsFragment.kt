@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.brickey.R
 import com.example.brickey.di.ViewModelFactories
 import com.example.brickey.databinding.FragmentSearchResultsBinding
 import com.example.brickey.models.SetSearchQuery
@@ -29,10 +31,27 @@ class SearchResultsFragment : Fragment() {
         _binding = FragmentSearchResultsBinding.inflate(inflater)
         _queryModel = _navArgs.searchQuery
 
+        _binding.searchResultsCountTextView.text = ""
+
+        _binding.navigateHomeButton.setOnClickListener {
+            val action = SearchResultsFragmentDirections.actionSearchResultsFragmentToHomeFragment()
+            val navController = findNavController()
+            navController.navigate(action)
+        }
+
+        _binding.setSearchButton.setOnClickListener {
+            _queryModel.searchTerm = _binding.searchEditText.text.toString()
+            _viewModel.searchSets(_queryModel)
+        }
+
         _binding.searchEditText.setText(_navArgs.searchQuery.searchTerm)
         _binding.searchEditText.setOnSubmitListener {
             _queryModel.searchTerm = _binding.searchEditText.text.toString()
             _viewModel.searchSets(_queryModel)
+        }
+
+        _binding.searchCancelButton.setOnClickListener {
+            _binding.searchEditText.setText("")
         }
 
         setupSearchResultsRecyclerView()
@@ -50,6 +69,10 @@ class SearchResultsFragment : Fragment() {
 
         _viewModel.setsLiveData.observe(viewLifecycleOwner) {
             _binding.searchResultsRecyclerView.adapter = SearchResultsAdapter(_viewModel, it)
+        }
+
+        _viewModel.setsCountLiveData.observe(viewLifecycleOwner) {
+            _binding.searchResultsCountTextView.text = getString(R.string.search_results_count, it)
         }
     }
 }

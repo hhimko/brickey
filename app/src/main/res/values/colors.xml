@@ -9,6 +9,9 @@
     <color name="white">#FFFFFFFF</color>
 
     <!-- brickey -->
+    <color name="transparent">#00000000</color>
+    <color name="background_dark">#181A1C</color>
+    <color name="background_light">#23272A</color>
     <color name="purple_hard">#736bfb</color>
     <color name="purple_soft">#8373e1</color>
     <color name="orange_hard">#feb017</color>

@@ -37,7 +37,7 @@
             android:background="@drawable/rounded_rect_14"
             android:hint="@string/set_search_hint"
             android:inputType="textShortMessage|text"
-            android:padding="8dp"
+            android:padding="10dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:selectAllOnFocus="true"
@@ -46,7 +46,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/backgroundCircleContainer_view" />
 
-        <com.google.android.material.button.MaterialButton
+        <ImageButton
             android:id="@+id/search_button"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -56,7 +56,21 @@
             app:layout_constraintBottom_toBottomOf="@+id/search_editText"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/search_editText" />
+            app:layout_constraintTop_toTopOf="@+id/search_editText"
+            android:contentDescription="@string/search_for_set_button_desc"/>
+
+        <ImageButton
+            android:id="@+id/search_icon_button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/search"
+            android:backgroundTint="@color/purple_hard"
+            android:layout_margin="10dp"
+            app:layout_constraintTop_toTopOf="@+id/search_button"
+            app:layout_constraintBottom_toBottomOf="@+id/search_button"
+            app:layout_constraintStart_toStartOf="@+id/search_button"
+            app:layout_constraintEnd_toEndOf="@+id/search_button"
+            android:contentDescription="@string/search_for_set_button_desc" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

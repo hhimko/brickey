@@ -23,11 +23,14 @@ class SearchResultsViewModel(
 ) : ViewModel() {
     private val _setsLD = MutableLiveData<List<Set>>()
     val setsLiveData: LiveData<List<Set>> = _setsLD
+    private val _setsCountLD = MutableLiveData<Int>()
+    val setsCountLiveData: LiveData<Int> = _setsCountLD
 
     fun searchSets(query: SetSearchQuery) {
         viewModelScope.launch {
             val pagedResponse = _apiClient.getSetsAsync(query.searchTerm)
             _setsLD.value = pagedResponse?.results ?: emptyList()
+            _setsCountLD.value = pagedResponse?.resultsCount ?: 0
         }
     }
 
