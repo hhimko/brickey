@@ -1,8 +1,10 @@
 package com.example.brickey.ui.search_results
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.brickey.R
 import com.example.brickey.databinding.SearchResultCardviewBinding
 import com.example.rebrickable.models.Set
 
@@ -11,27 +13,25 @@ class SearchResultsAdapter(
     private val _viewModel: SearchResultsViewModel, private val _results: List<Set>
 ) : RecyclerView.Adapter<SearchResultsAdapter.SearchResultsViewHolder>() {
 
-    class SearchResultsViewHolder(private val binding: SearchResultCardviewBinding)
-        : RecyclerView.ViewHolder(binding.root) {
+    class SearchResultsViewHolder(
+        private val _context: Context,
+        private val _binding: SearchResultCardviewBinding
+    ) : RecyclerView.ViewHolder(_binding.root) {
 
         fun bindSearchResult(viewModel: SearchResultsViewModel, set: Set) {
-            viewModel.loadSetImage(binding.root.context, binding.setImageView, set)
-            viewModel.loadBlurredSetImage(binding.root.context, binding.backgroundOverlayImageView, set)
+            viewModel.loadSetImage(_binding.root.context, _binding.setImageView, set)
+            viewModel.loadBlurredSetImage(_binding.root.context, _binding.backgroundOverlayImageView, set)
 
-            binding.setNameTextView.text = set.name
-            binding.setNumberTextView.text = set.setNum
-            binding.setYearTextView.text = set.releaseYear.toString()
+            _binding.setNameTextView.text = set.name
+            _binding.setNumberTextView.text = set.setNum
+            val partCountText = _context.getString(R.string.set_part_count, set.partCount)
+            _binding.setPartCountTextView.text = partCountText
+            _binding.setYearTextView.text = set.releaseYear.toString()
 
             // Query the set theme info
             viewModel.loadSetTheme(set) {
-                binding.setThemeTextView.text = set.theme?.getFullThemeName() ?: "LEGO®"
+                _binding.setThemeTextView.text = set.theme?.getFullThemeName() ?: "LEGO®"
             }
-
-            // Query the set minifig list
-//            viewModel.loadSetMinifigs(set) {
-//                binding.minifigCountTextView.text =
-//                    if (set.minifigs != null) set.minifigs!!.count().toString() else "?"
-//            }
         }
     }
 
@@ -39,7 +39,7 @@ class SearchResultsAdapter(
         val inflater = LayoutInflater.from(parent.context)
         val binding = SearchResultCardviewBinding.inflate(inflater, parent, false)
 
-        return SearchResultsViewHolder(binding)
+        return SearchResultsViewHolder(parent.context, binding)
     }
 
     override fun onBindViewHolder(viewHolder: SearchResultsViewHolder, position: Int) {

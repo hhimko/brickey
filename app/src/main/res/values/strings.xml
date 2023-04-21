@@ -1,10 +1,12 @@
 <resources>
     <string name="app_name">brickey</string>
     <string name="set_search_hint">search for a set</string>
-    <string name="search_result_cardview_image_contentDescription">Set image</string>
-    <string name="set_number">set number</string>
+    <string name="search_result_cardview_image_desc">Set image</string>
+    <string name="set_number_desc">set number</string>
     <string name="unknown3">\???</string>
-    <string name="set_release_year">set release year</string>
+    <string name="set_release_year_desc">set release year</string>
     <string name="lego">LEGO®</string>
-    <string name="set_name">Set name</string>
+    <string name="set_name_desc">Set name</string>
+    <string name="set_part_count_desc">set part count</string>
+    <string name="set_part_count">%1$d elem.</string>
 </resources>

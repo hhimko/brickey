@@ -22,7 +22,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:drawable/screen_background_light"
-            android:contentDescription="@string/search_result_cardview_image_contentDescription" />
+            android:contentDescription="@string/search_result_cardview_image_desc" />
 
         <!-- nested CardViews for rounded corners -->
         <androidx.cardview.widget.CardView
@@ -40,7 +40,8 @@
                 android:id="@+id/background_overlay_imageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:contentDescription="@string/search_result_cardview_image_contentDescription"
+                android:contentDescription="@string/search_result_cardview_image_desc"
+                android:background="#444"
                 android:foreground="@drawable/gradient_overlay"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -75,24 +76,24 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:text="@string/set_name"
+                    android:text="@string/set_name_desc"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold"
+                    android:layout_marginTop="-2dp"
                     app:layout_constraintEnd_toEndOf="@+id/set_theme_textView"
                     app:layout_constraintStart_toStartOf="@+id/set_theme_textView"
                     app:layout_constraintTop_toBottomOf="@+id/set_theme_textView" />
 
-                <ImageView
-                    android:id="@+id/set_hash_number_imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    app:layout_constraintTop_toBottomOf="@id/set_name_textView"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/set_number_textView"
-                    app:srcCompat="@drawable/hash_number"
-                    app:tint="@color/white"
-                    android:contentDescription="@string/set_number" />
+                    app:layout_constraintEnd_toEndOf="@id/set_number_textView"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="-16dp"
+                    android:background="@color/white"/>
 
                 <TextView
                     android:id="@+id/set_number_textView"
@@ -100,19 +101,42 @@
                     android:layout_height="wrap_content"
                     android:text="@string/unknown3"
                     android:textColor="@color/white"
+                    android:layout_marginTop="4dp"
                     android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/set_hash_number_imageView" />
+                    app:layout_constraintTop_toBottomOf="@id/set_name_textView"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <ImageView
-                    android:id="@+id/set_year_calendar_imageView"
+                    android:id="@+id/set_part_count_icon_imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="-5dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/set_part_count_textView"
+                    app:srcCompat="@drawable/hash_number"
+                    app:tint="@color/white"
+                    android:contentDescription="@string/set_part_count_desc" />
+
+                <TextView
+                    android:id="@+id/set_part_count_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unknown3"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/set_part_count_icon_imageView" />
+
+                <ImageView
+                    android:id="@+id/set_year_icon_imageView"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_marginStart="10dp"
-                    android:contentDescription="@string/set_release_year"
+                    android:contentDescription="@string/set_release_year_desc"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/set_number_textView"
-                    app:layout_constraintTop_toTopOf="@+id/set_number_textView"
+                    app:layout_constraintStart_toEndOf="@+id/set_part_count_textView"
+                    app:layout_constraintTop_toTopOf="@+id/set_part_count_textView"
                     app:srcCompat="@drawable/calendar"
                     app:tint="@color/white" />
 
@@ -124,7 +148,7 @@
                     android:textSize="12sp"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/set_year_calendar_imageView" />
+                    app:layout_constraintStart_toEndOf="@+id/set_year_icon_imageView" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

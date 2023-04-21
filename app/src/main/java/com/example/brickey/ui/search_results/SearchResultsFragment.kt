@@ -29,7 +29,6 @@ class SearchResultsFragment : Fragment() {
         _binding = FragmentSearchResultsBinding.inflate(inflater)
         _queryModel = _navArgs.searchQuery
 
-
         _binding.searchEditText.setText(_navArgs.searchQuery.searchTerm)
         _binding.searchEditText.setOnSubmitListener {
             _queryModel.searchTerm = _binding.searchEditText.text.toString()
