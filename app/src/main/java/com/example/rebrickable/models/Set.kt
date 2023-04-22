@@ -3,7 +3,6 @@ package com.example.rebrickable.models
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.Transient
-import java.net.URL
 
 
 @Serializable
@@ -22,7 +21,7 @@ data class Set(
     @SerialName("set_url")
     val rebrickableURL: String?
 
-) {
+): java.io.Serializable {
     @Transient
     var theme: Theme? = null
 

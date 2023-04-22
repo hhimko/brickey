@@ -10,7 +10,9 @@ import com.example.rebrickable.models.Set
 
 
 class SearchResultsAdapter(
-    private val _viewModel: SearchResultsViewModel, private val _results: List<Set>
+    private val _viewModel: SearchResultsViewModel,
+    private val _onItemClick: (Set) -> Unit,
+    private val _results: List<Set>,
 ) : RecyclerView.Adapter<SearchResultsAdapter.SearchResultsViewHolder>() {
 
     class SearchResultsViewHolder(
@@ -19,17 +21,17 @@ class SearchResultsAdapter(
     ) : RecyclerView.ViewHolder(_binding.root) {
 
         fun bindSearchResult(viewModel: SearchResultsViewModel, set: Set) {
-            viewModel.loadSetImage(_binding.root.context, _binding.setImageView, set)
+            viewModel.loadSetImage(_binding.root.context, _binding.setImageImageView, set)
             viewModel.loadBlurredSetImage(_binding.root.context, _binding.backgroundOverlayImageView, set)
 
             _binding.setNameTextView.text = set.name
             _binding.setNumberTextView.text = set.setNum
-            val partCountText = _context.getString(R.string.set_part_count, set.partCount)
+            val partCountText = _context.getString(R.string.set_part_count_short, set.partCount)
             _binding.setPartCountTextView.text = partCountText
             _binding.setYearTextView.text = set.releaseYear.toString()
 
             // Query the set theme info
-            viewModel.loadSetTheme(set) {
+            viewModel.loadSetTheme(set).invokeOnCompletion {
                 _binding.setThemeTextView.text = set.theme?.getFullThemeName() ?: "LEGO®"
             }
         }
@@ -44,6 +46,7 @@ class SearchResultsAdapter(
 
     override fun onBindViewHolder(viewHolder: SearchResultsViewHolder, position: Int) {
         val set = _results[position]
+        viewHolder.itemView.setOnClickListener { _onItemClick(set) }
         viewHolder.bindSearchResult(_viewModel, set)
     }
 

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.brickey.ui.home.HomeViewModel
 import com.example.brickey.ui.search_results.SearchResultsViewModel
+import com.example.brickey.ui.set_details.SetDetailsViewModel
 import com.example.rebrickable.RebrickableApiClient
 
 
@@ -30,6 +31,14 @@ class ViewModelFactories {
                 val apiClient = DependencyServices.getInstance<RebrickableApiClient>()
 
                 return SearchResultsViewModel(apiClient)
+            }
+        }
+
+        val setDetailsViewModelFactory = object: ViewModelFactory<SetDetailsViewModel> {
+            override fun inject(): SetDetailsViewModel {
+                val apiClient = DependencyServices.getInstance<RebrickableApiClient>()
+
+                return SetDetailsViewModel(apiClient)
             }
         }
     }

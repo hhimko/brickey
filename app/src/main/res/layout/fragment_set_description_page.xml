@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.set_details.SetDescriptionPageFragment"
+    android:background="@color/background_light"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/set_theme_textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/lego"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/set_name_textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/set_name_desc"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/set_theme_textView"
+        app:layout_constraintStart_toStartOf="@+id/set_theme_textView"
+        app:layout_constraintTop_toBottomOf="@+id/set_theme_textView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1"
+        android:background="@color/background_light"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/foreground_dark">
+
+            <ImageView
+                android:layout_marginStart="18dp"
+                android:contentDescription="@string/set_number_desc"
+                android:paddingVertical="4dp"
+                android:src="@drawable/hash_number"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/set_number_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/set_number_desc"
+                android:textColor="@color/white"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_marginVertical="4dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="10dp"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <ImageView
+                android:src="@drawable/hash_number"
+                android:paddingVertical="4dp"
+                app:tint="@color/white"
+                android:layout_marginStart="18dp"
+                android:contentDescription="@string/set_part_count_desc" />
+
+            <TextView
+                android:id="@+id/set_part_count_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/set_part_count_full"
+                android:textColor="@color/white"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_marginVertical="4dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="10dp"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/foreground_dark">
+
+            <ImageView
+                android:layout_marginStart="18dp"
+                android:contentDescription="@string/set_release_year_desc"
+                android:paddingVertical="4dp"
+                android:src="@drawable/calendar"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/set_year_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/set_release_year_desc"
+                android:textColor="@color/white"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_marginVertical="4dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="10dp"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <ImageView
+                android:src="@drawable/hash_number"
+                android:paddingVertical="4dp"
+                app:tint="@color/white"
+                android:layout_marginStart="18dp"
+                android:contentDescription="@string/set_part_count_desc" />
+
+            <TextView
+                android:id="@+id/set_minifig_count_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/set_minifig_count"
+                android:textColor="@color/white"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_marginVertical="4dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="10dp"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/foreground_dark">
+
+            <ImageView
+                android:layout_marginStart="18dp"
+                android:contentDescription="@string/rebrickable_url"
+                android:paddingVertical="4dp"
+                android:src="@drawable/web"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/rebrickable_url_textView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:textColor="@color/white"
+                android:autoSizeTextType="uniform"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_marginEnd="20dp"
+                android:layout_marginVertical="4dp"
+                android:layout_marginStart="10dp"/>
+
+        </TableRow>
+
+    </TableLayout>
+
+</LinearLayout>

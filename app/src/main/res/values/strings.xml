@@ -8,9 +8,27 @@
     <string name="lego">LEGO®</string>
     <string name="set_name_desc">Set name</string>
     <string name="set_part_count_desc">Set part count</string>
-    <string name="set_part_count">%1$d elem.</string>
+    <string name="set_part_count_short">%1$d elem.</string>
+    <string name="set_part_count_full">0 elements</string>
+    <plurals name="set_part_count_full">
+        <item quantity="one">1 element</item>
+        <item quantity="other">%1$d elements</item>
+    </plurals>
+    <string name="set_minifig_count">0 minifigs</string>
+    <plurals name="set_minifig_count">
+        <item quantity="one">1 minifig</item>
+        <item quantity="other">%1$d minifigs</item>
+    </plurals>
     <string name="search_for_set_button_desc">Search for a set</string>
     <string name="clear_search_input_button_desc">Clear search input</string>
-    <string name="search_results_count">Found %1$d results</string>
+    <string name="no_search_results">No results found</string>
+    <plurals name="search_results_count">
+        <item quantity="one">Showing 1 result</item>
+        <item quantity="other">Showing %1$d results</item>
+    </plurals>
     <string name="return_button">Return button</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="minifigures">Minifigures</string>
+    <string name="description">Description</string>
+    <string name="rebrickable_url">Rebrickable URL</string>
 </resources>

@@ -12,7 +12,9 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_searchResultsFragment"
-            app:destination="@id/searchResultsFragment" />
+            app:destination="@id/searchResultsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/searchResultsFragment"
@@ -21,9 +23,30 @@
         tools:layout="@layout/fragment_search_results" >
         <action
             android:id="@+id/action_searchResultsFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
         <argument
             android:name="searchQuery"
             app:argType="com.example.brickey.models.SetSearchQuery" />
+        <action
+            android:id="@+id/action_searchResultsFragment_to_setDetailsFragment"
+            app:destination="@id/setDetailsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/setDetailsFragment"
+        android:name="com.example.brickey.ui.set_details.SetDetailsFragment"
+        android:label="fragment_set_details"
+        tools:layout="@layout/fragment_set_details" >
+        <action
+            android:id="@+id/action_setDetailsFragment_to_searchResultsFragment"
+            app:destination="@id/searchResultsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+        <argument
+            android:name="set"
+            app:argType="com.example.rebrickable.models.Set" />
     </fragment>
 </navigation>

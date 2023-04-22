@@ -14,11 +14,11 @@ import com.example.brickey.di.ViewModelFactories
 import com.example.brickey.databinding.FragmentSearchResultsBinding
 import com.example.brickey.models.SetSearchQuery
 import com.example.utility.setOnSubmitListener
+import com.example.rebrickable.models.Set
 
 
 class SearchResultsFragment : Fragment() {
     private val _navArgs: SearchResultsFragmentArgs by navArgs()
-    private lateinit var _binding: FragmentSearchResultsBinding
     private lateinit var _queryModel: SetSearchQuery
     private val _viewModel: SearchResultsViewModel by viewModels {
         ViewModelFactories.searchResultsViewModelFactory
@@ -28,34 +28,34 @@ class SearchResultsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSearchResultsBinding.inflate(inflater)
+        val binding = FragmentSearchResultsBinding.inflate(inflater)
         _queryModel = _navArgs.searchQuery
 
-        _binding.searchResultsCountTextView.text = ""
+        binding.searchResultsCountTextView.text = ""
 
-        _binding.navigateHomeButton.setOnClickListener {
+        binding.navigateHomeButton.setOnClickListener {
             val action = SearchResultsFragmentDirections.actionSearchResultsFragmentToHomeFragment()
             val navController = findNavController()
             navController.navigate(action)
         }
 
-        _binding.setSearchButton.setOnClickListener {
-            _queryModel.searchTerm = _binding.searchEditText.text.toString()
+        binding.setSearchButton.setOnClickListener {
+            _queryModel.searchTerm = binding.searchEditText.text.toString()
             _viewModel.searchSets(_queryModel)
         }
 
-        _binding.searchEditText.setText(_navArgs.searchQuery.searchTerm)
-        _binding.searchEditText.setOnSubmitListener {
-            _queryModel.searchTerm = _binding.searchEditText.text.toString()
+        binding.searchEditText.setText(_navArgs.searchQuery.searchTerm)
+        binding.searchEditText.setOnSubmitListener {
+            _queryModel.searchTerm = binding.searchEditText.text.toString()
             _viewModel.searchSets(_queryModel)
         }
 
-        _binding.searchCancelButton.setOnClickListener {
-            _binding.searchEditText.setText("")
+        binding.searchCancelButton.setOnClickListener {
+            binding.searchEditText.setText("")
         }
 
-        setupSearchResultsRecyclerView()
-        return _binding.root
+        setupSearchResultsRecyclerView(binding)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -64,15 +64,24 @@ class SearchResultsFragment : Fragment() {
         _viewModel.searchSets(_queryModel)
     }
 
-    private fun setupSearchResultsRecyclerView() {
-        _binding.searchResultsRecyclerView.layoutManager = LinearLayoutManager(context)
+    private fun setupSearchResultsRecyclerView(binding: FragmentSearchResultsBinding) {
+        binding.searchResultsRecyclerView.layoutManager = LinearLayoutManager(context)
 
         _viewModel.setsLiveData.observe(viewLifecycleOwner) {
-            _binding.searchResultsRecyclerView.adapter = SearchResultsAdapter(_viewModel, it)
+            binding.searchResultsRecyclerView.adapter = SearchResultsAdapter(
+                _viewModel, ::onRecyclerViewItemClick, it
+            )
         }
 
         _viewModel.setsCountLiveData.observe(viewLifecycleOwner) {
-            _binding.searchResultsCountTextView.text = getString(R.string.search_results_count, it)
+            val text = resources.getQuantityString(R.plurals.search_results_count, it, it)
+            binding.searchResultsCountTextView.text = text
         }
+    }
+
+    private fun onRecyclerViewItemClick(set: Set) {
+        val action = SearchResultsFragmentDirections.actionSearchResultsFragmentToSetDetailsFragment(set)
+        val navController = findNavController()
+        navController.navigate(action)
     }
 }

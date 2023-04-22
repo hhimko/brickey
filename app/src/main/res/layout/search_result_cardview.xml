@@ -8,13 +8,12 @@
     android:layout_marginRight="10dp"
     app:cardCornerRadius="10dp">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/set_imageView"
+            android:id="@+id/set_image_imageView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintDimensionRatio="1:1"
@@ -33,7 +32,7 @@
             app:cardCornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/set_imageView"
+            app:layout_constraintStart_toEndOf="@+id/set_image_imageView"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView

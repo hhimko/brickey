@@ -1,13 +1,13 @@
 package com.example.brickey.models
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
+import kotlinx.serialization.Serializable
 
 
-@Parcelize
+@Serializable
 data class SetSearchQuery(
     var searchTerm: String,
     var themeId: Int?
-) : Parcelable {
+) : java.io.Serializable {
     constructor(searchTerm: String) : this(searchTerm, null)
+
 }
