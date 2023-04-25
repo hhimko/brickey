@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:stretchColumns="1"
         android:background="@color/background_light"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical">
 
         <TableRow
