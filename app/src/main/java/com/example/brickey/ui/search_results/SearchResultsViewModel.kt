@@ -27,6 +27,7 @@ class SearchResultsViewModel(
     private val _setsCountLD = MutableLiveData<Int>()
     val setsCountLiveData: LiveData<Int> = _setsCountLD
 
+
     fun searchSets(query: SetSearchQuery) {
         viewModelScope.launch {
             val pagedResponse = _apiClient.getSetsAsync(query.searchTerm)

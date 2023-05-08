@@ -66,6 +66,9 @@ class SearchResultsFragment : Fragment() {
 
     private fun setupSearchResultsRecyclerView(binding: FragmentSearchResultsBinding) {
         binding.searchResultsRecyclerView.layoutManager = LinearLayoutManager(context)
+        binding.searchResultsRecyclerView.adapter = SearchResultsAdapter(
+            _viewModel, ::onRecyclerViewItemClick, emptyList()
+        )
 
         _viewModel.setsLiveData.observe(viewLifecycleOwner) {
             binding.searchResultsRecyclerView.adapter = SearchResultsAdapter(

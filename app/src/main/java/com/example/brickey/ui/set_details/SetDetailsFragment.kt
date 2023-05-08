@@ -43,7 +43,7 @@ class SetDetailsFragment : Fragment() {
         val viewPager = binding.contentViewPager
         val chipGroup = binding.contentChipGroup
 
-        viewPager.adapter = SetDetailsStateAdapter(this, _set)
+        viewPager.adapter = SetDetailsStateAdapter(this, _viewModel, _set)
         viewPager.registerOnPageChangeCallback(object: OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 val chip = if (position == SetDetailsStateAdapter.Pages.DESCRIPTION_PAGE.value)

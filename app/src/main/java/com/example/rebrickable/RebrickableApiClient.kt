@@ -59,8 +59,6 @@ class RebrickableApiClient(auth_token: String, cache_size: Int = 100) {
             "in_set_num" to set_num, "page_size" to pageSize
         ))
 
-        println(set_num)
-
         val res = _httpClient.getAsync<PagedResponse<Minifig>>("lego/minifigs?$params").result
         var page = res ?: return null
         val minifigs = page.results.toMutableList()

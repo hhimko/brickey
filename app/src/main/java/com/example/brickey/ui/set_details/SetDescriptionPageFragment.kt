@@ -5,17 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import com.example.brickey.R
 import com.example.brickey.databinding.FragmentSetDescriptionPageBinding
-import com.example.brickey.di.ViewModelFactories
 import com.example.rebrickable.models.Set
 
 
-class SetDescriptionPageFragment(private val _set: Set) : Fragment() {
-    private val _viewModel: SetDetailsViewModel by viewModels {
-        ViewModelFactories.setDetailsViewModelFactory
-    }
+class SetDescriptionPageFragment(private val _viewModel: SetDetailsViewModel, private val _set: Set) : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

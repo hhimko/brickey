@@ -13,17 +13,17 @@ data class Theme(
 ): java.io.Serializable {
 
     fun getFullThemeName(): String {
-        return "LEGO®" + _getFullThemeNameBuilder(this)
+        return "LEGO®" + getFullThemeNameBuilder(this)
     }
 
 
     companion object {
 
-        private fun _getFullThemeNameBuilder(theme: Theme): String {
+        private fun getFullThemeNameBuilder(theme: Theme): String {
             if (theme.parent == null)
                 return " ${theme.name}"
 
-            return _getFullThemeNameBuilder(theme.parent) + ": ${theme.name}"
+            return getFullThemeNameBuilder(theme.parent) + ": ${theme.name}"
         }
 
         suspend fun fromPartial(client: RebrickableApiClient, partial: ThemePartial): Theme {

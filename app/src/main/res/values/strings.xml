@@ -7,6 +7,7 @@
     <string name="set_release_year_desc">Set release year</string>
     <string name="lego">LEGO®</string>
     <string name="set_name_desc">Set name</string>
+    <string name="minifig_name_desc">Minifig name</string>
     <string name="set_part_count_desc">Set part count</string>
     <string name="set_part_count_short">%1$d elem.</string>
     <string name="set_part_count_full">0 elements</string>
@@ -14,10 +15,17 @@
         <item quantity="one">1 element</item>
         <item quantity="other">%1$d elements</item>
     </plurals>
+    <string name="minifig_part_count_desc">Minifigure part count</string>
     <string name="set_minifig_count">0 minifigs</string>
     <plurals name="set_minifig_count">
         <item quantity="one">1 minifig</item>
         <item quantity="other">%1$d minifigs</item>
+    </plurals>
+    <string name="set_minifig_count_full">No minifgures!</string>
+    <plurals name="set_minifig_count_full">
+        <item quantity="zero">No minifgures!</item>
+        <item quantity="one">1 minifigure total</item>
+        <item quantity="other">%1$d minifigures total</item>
     </plurals>
     <string name="search_for_set_button_desc">Search for a set</string>
     <string name="clear_search_input_button_desc">Clear search input</string>
