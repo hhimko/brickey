@@ -5,35 +5,60 @@
     android:id="@+id/fragment_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_light"
     tools:context=".ui.home.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/brickey_logo_imageView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/brickey_logo2"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/button_top"
+            app:layout_constraintStart_toStartOf="@+id/button_top"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <View
-            android:id="@+id/backgroundCircleContainer_view"
+            android:id="@+id/background_circle_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="-500dp"
-            android:layout_marginTop="160dp"
-            android:layout_marginEnd="-500dp"
+            android:layout_marginStart="-800dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="-800dp"
             android:background="@drawable/circle"
-
             android:backgroundTint="@color/purple_soft"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/brickey_logo_imageView" />
+
+        <View
+            android:id="@+id/foreground_circle_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="-800dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="-800dp"
+            android:background="@drawable/circle"
+            android:backgroundTint="@color/purple_hard"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_editText" />
 
         <EditText
             android:id="@+id/search_editText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="50dp"
             android:layout_marginEnd="12dp"
             android:autofillHints=""
+            android:elevation="10dp"
             android:background="@drawable/rounded_rect_14"
             android:hint="@string/set_search_hint"
             android:inputType="textShortMessage|text"
@@ -42,9 +67,10 @@
             android:paddingEnd="16dp"
             android:selectAllOnFocus="true"
             android:singleLine="true"
+            android:shadowColor="#000"
             app:layout_constraintEnd_toStartOf="@+id/search_button"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/backgroundCircleContainer_view" />
+            app:layout_constraintTop_toTopOf="@+id/background_circle_view" />
 
         <ImageButton
             android:id="@+id/search_button"
@@ -52,6 +78,7 @@
             android:layout_height="0dp"
             android:layout_marginEnd="40dp"
             app:backgroundTint="#fff"
+            android:elevation="10dp"
             android:background="@drawable/rounded_rect_14"
             app:layout_constraintBottom_toBottomOf="@+id/search_editText"
             app:layout_constraintDimensionRatio="1:1"
@@ -66,12 +93,76 @@
             android:background="@drawable/search"
             android:backgroundTint="@color/purple_hard"
             android:layout_margin="10dp"
+            android:elevation="10dp"
             app:layout_constraintTop_toTopOf="@+id/search_button"
             app:layout_constraintBottom_toBottomOf="@+id/search_button"
             app:layout_constraintStart_toStartOf="@+id/search_button"
             app:layout_constraintEnd_toEndOf="@+id/search_button"
             android:contentDescription="@string/search_for_set_button_desc" />
 
+        <Button
+            android:id="@+id/button_top"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="-20dp"
+            android:layout_marginHorizontal="10dp"
+            android:backgroundTint="#0000"
+            android:foreground="@drawable/rounded_rect_14"
+            android:foregroundTint="@color/white"
+            android:shadowColor="#000"
+            android:shadowRadius="100"
+            app:layout_constraintEnd_toEndOf="@+id/search_button"
+            app:layout_constraintStart_toStartOf="@+id/search_editText"
+            app:layout_constraintTop_toTopOf="@+id/foreground_circle_view" />
+
+        <Button
+            android:id="@+id/button_middle"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="10dp"
+            android:backgroundTint="#0000"
+            android:foreground="@drawable/rounded_rect_14"
+            android:foregroundTint="@color/white"
+            app:layout_constraintEnd_toEndOf="@+id/search_button"
+            app:layout_constraintStart_toStartOf="@+id/search_editText"
+            app:layout_constraintTop_toBottomOf="@+id/button_top" />
+
+        <Button
+            android:id="@+id/button_bottom"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="10dp"
+            android:backgroundTint="#0000"
+            android:foreground="@drawable/rounded_rect_14"
+            android:foregroundTint="@color/white"
+            app:layout_constraintEnd_toEndOf="@+id/search_button"
+            app:layout_constraintStart_toStartOf="@+id/search_editText"
+            app:layout_constraintTop_toBottomOf="@+id/button_middle" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/background_dark"
+            android:layout_marginTop="-4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/made_by_textView"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/made_by_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/made_with_love_by_himko"
+            android:textColor="@color/foreground_light"
+            android:textSize="12sp"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
