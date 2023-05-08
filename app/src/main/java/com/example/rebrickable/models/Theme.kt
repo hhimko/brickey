@@ -1,14 +1,16 @@
 package com.example.rebrickable.models
 
 import com.example.rebrickable.RebrickableApiClient
+import kotlinx.serialization.Serializable
 import com.example.rebrickable.models.partial.ThemePartial
 
 
+@Serializable
 data class Theme(
     val id: Int,
     val name: String,
     val parent: Theme?
-) {
+): java.io.Serializable {
 
     fun getFullThemeName(): String {
         return "LEGO®" + _getFullThemeNameBuilder(this)

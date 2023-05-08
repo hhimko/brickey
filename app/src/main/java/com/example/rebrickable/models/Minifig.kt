@@ -14,4 +14,4 @@ data class Minifig(
     @SerialName("set_url")
     val rebrickableURL: String?
 
-)
+): java.io.Serializable
