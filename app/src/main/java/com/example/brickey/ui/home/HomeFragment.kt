@@ -15,24 +15,28 @@ import com.example.utility.setOnSubmitListener
 
 class HomeFragment : Fragment() {
     private val _viewModel: HomeViewModel by viewModels { ViewModelFactories.homeViewModelFactory }
-
+    private lateinit var _binding: FragmentHomeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         val binding: FragmentHomeBinding = FragmentHomeBinding.inflate(inflater)
+        _binding = binding
 
-        binding.searchEditText.setOnSubmitListener { onSearch(binding.searchEditText.text.toString()) }
-        binding.searchButton.setOnClickListener { onSearch(binding.searchEditText.text.toString()) }
-        binding.searchIconButton.setOnClickListener { onSearch(binding.searchEditText.text.toString()) }
+        binding.searchEditText.setOnSubmitListener { onSearch() }
+        binding.searchButton.setOnClickListener { onSearch() }
+        binding.searchIconButton.setOnClickListener { onSearch() }
         binding.buttonTop.setOnClickListener { onTopButtonClick() }
 
         return binding.root
     }
 
-    private fun onSearch(searchTerm: String) {
-        if (searchTerm.isEmpty())
+    private fun onSearch() {
+        val searchTerm = _binding.searchEditText.text.toString()
+        if (searchTerm.isEmpty()) {
+            _binding.searchEditText.startAnimation(_viewModel.getShakeAnimation())
             return
+        }
 
         val query = SetSearchQuery(searchTerm)
         val action = HomeFragmentDirections.actionHomeFragmentToSearchResultsFragment(query)
