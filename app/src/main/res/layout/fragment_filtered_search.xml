@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background_light"
+    tools:context=".ui.filtered_search.FilteredSearchFragment">
+
+    <View
+        android:id="@+id/header_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/background_dark"
+        android:layout_marginBottom="-10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/navigate_back_button"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/navigate_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="9dp"
+        android:background="@drawable/navigate_back"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/return_button"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="-1dp"
+        android:background="@drawable/circle"
+        android:backgroundTint="@color/purple_soft"
+        android:layout_marginTop="-260dp"
+        android:layout_marginBottom="-100dp"
+        android:layout_marginEnd="-280dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintDimensionRatio="1:1"/>
+
+
+    <EditText
+        android:id="@+id/search_editText"
+        android:layout_width="0dp"
+        android:elevation="10dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="140dp"
+        android:autofillHints=""
+        android:textSize="20sp"
+        android:background="@drawable/rounded_rect_14"
+        android:hint="@string/set_name_desc"
+        android:inputType="textShortMessage|text"
+        android:paddingVertical="8dp"
+        android:paddingHorizontal="16dp"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_view" />
+
+    <View
+        android:layout_width="360dp"
+        android:layout_height="0dp"
+        android:elevation="-1dp"
+        android:background="@drawable/circle"
+        android:backgroundTint="@color/background_dark"
+        android:layout_marginTop="-150dp"
+        android:layout_marginStart="-250dp"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintDimensionRatio="1:1"/>
+
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:background="@drawable/round_button"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="40dp"
+        app:icon="@drawable/search"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconSize="40dp"
+        app:iconTint="@color/white"
+        android:insetLeft="0dp"
+        android:insetTop="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="@string/search_for_set_button_desc"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

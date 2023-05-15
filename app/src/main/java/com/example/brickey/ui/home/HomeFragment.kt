@@ -25,6 +25,7 @@ class HomeFragment : Fragment() {
         binding.searchEditText.setOnSubmitListener { onSearch(binding.searchEditText.text.toString()) }
         binding.searchButton.setOnClickListener { onSearch(binding.searchEditText.text.toString()) }
         binding.searchIconButton.setOnClickListener { onSearch(binding.searchEditText.text.toString()) }
+        binding.buttonTop.setOnClickListener { onTopButtonClick() }
 
         return binding.root
     }
@@ -35,6 +36,13 @@ class HomeFragment : Fragment() {
 
         val query = SetSearchQuery(searchTerm)
         val action = HomeFragmentDirections.actionHomeFragmentToSearchResultsFragment(query)
+
+        val navController = findNavController()
+        navController.navigate(action)
+    }
+
+    private fun onTopButtonClick() {
+        val action = HomeFragmentDirections.actionHomeFragmentToFilteredSearchFragment()
 
         val navController = findNavController()
         navController.navigate(action)

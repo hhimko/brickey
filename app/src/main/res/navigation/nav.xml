@@ -15,6 +15,9 @@
             app:destination="@id/searchResultsFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_homeFragment_to_filteredSearchFragment"
+            app:destination="@id/filteredSearchFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchResultsFragment"
@@ -48,5 +51,14 @@
         <argument
             android:name="set"
             app:argType="com.example.rebrickable.models.Set" />
+    </fragment>
+    <fragment
+        android:id="@+id/filteredSearchFragment"
+        android:name="com.example.brickey.ui.filtered_search.FilteredSearchFragment"
+        android:label="fragment_filtered_search"
+        tools:layout="@layout/fragment_filtered_search" >
+        <action
+            android:id="@+id/action_filteredSearchFragment_to_searchResultsFragment"
+            app:destination="@id/searchResultsFragment" />
     </fragment>
 </navigation>
