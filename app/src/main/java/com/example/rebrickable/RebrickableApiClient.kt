@@ -31,10 +31,17 @@ class RebrickableApiClient(auth_token: String, cache_size: Int = 100) {
         return _httpClient.getAsync<PagedResponse<T>>(endpoint).result
     }
 
-    suspend fun getSetsAsync(search_term: String): PagedResponse<Set>? {
-        val params = HttpClient.buildParams(mapOf(
-            "search" to search_term, "page_size" to pageSize
-        ))
+    suspend fun getSetsAsync(search_term: String, release_year: Int?): PagedResponse<Set>? {
+        val paramMap = mutableMapOf(
+            "search" to search_term, "page_size" to pageSize,
+        )
+
+        if (release_year != null){
+            paramMap["min_year"] = release_year
+            paramMap["max_year"] = release_year
+        }
+
+        val params = HttpClient.buildParams(paramMap)
 
         return _httpClient.getAsync<PagedResponse<Set>>("lego/sets?$params").result
     }

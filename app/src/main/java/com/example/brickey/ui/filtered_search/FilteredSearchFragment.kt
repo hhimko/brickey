@@ -10,12 +10,12 @@ import androidx.navigation.fragment.findNavController
 import com.example.brickey.databinding.FragmentFilteredSearchBinding
 import com.example.brickey.di.ViewModelFactories
 import com.example.brickey.models.SetSearchQuery
-import com.example.brickey.ui.home.HomeViewModel
 import com.example.utility.setOnSubmitListener
+import java.util.*
 
 
 class FilteredSearchFragment : Fragment() {
-    private val _viewModel: HomeViewModel by viewModels { ViewModelFactories.filteredSearchViewModelFactory }
+    private val _viewModel: FilteredSearchViewModel by viewModels { ViewModelFactories.filteredSearchViewModelFactory }
     private lateinit var _binding: FragmentFilteredSearchBinding
 
 
@@ -38,12 +38,21 @@ class FilteredSearchFragment : Fragment() {
 
     private fun onSearch() {
         val searchTerm = _binding.searchEditText.text.toString()
-        if (searchTerm.isEmpty()){
-            _binding.searchEditText.startAnimation(_viewModel.getShakeAnimation())
-            return
+
+        val releaseYear = _binding.yearEditText.text.let {
+            if (it.isEmpty())
+                return@let null
+
+            val value = it.toString().toIntOrNull() ?: return@let null
+            if (value < 1000 || value > Calendar.getInstance().get(Calendar.YEAR)) {
+                _binding.yearEditText.startAnimation(_viewModel.getShakeAnimation())
+                return@onSearch
+            }
+
+            return@let value
         }
 
-        val query = SetSearchQuery(searchTerm)
+        val query = SetSearchQuery(searchTerm, null, releaseYear)
         val action = FilteredSearchFragmentDirections.actionFilteredSearchFragmentToSearchResultsFragment(query)
 
         val navController = findNavController()

@@ -30,7 +30,7 @@ class SearchResultsViewModel(
 
     fun searchSets(query: SetSearchQuery) {
         viewModelScope.launch {
-            val pagedResponse = _apiClient.getSetsAsync(query.searchTerm)
+            val pagedResponse = _apiClient.getSetsAsync(query.searchTerm, query.releaseYear)
             _setsLD.value = pagedResponse?.results ?: emptyList()
             _setsCountLD.value = pagedResponse?.resultsCount ?: 0
         }
